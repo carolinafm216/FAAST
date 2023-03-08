@@ -27,4 +27,4 @@ jobs:
         
     - name: Test the code with pylint
       run: |
-        pytest assignments/life_expectancy - cov
+        pytest assignments - cov

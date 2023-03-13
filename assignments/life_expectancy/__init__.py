@@ -6,3 +6,4 @@ SAVE_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_ex
 
 if __name__ == "__main__":  # pragma: no cover
     clean_data(LIFE_EXPECTANCY_FILE_PATH,'PT')
+    

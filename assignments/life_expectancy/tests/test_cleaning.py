@@ -1,9 +1,8 @@
 """Tests for the cleaning module"""
 import pandas as pd
-import argparse
 
 from life_expectancy.cleaning import clean_data
-from . import OUTPUT_DIR, LIFE_EXPECTANCY_FILE_PATH, SAVE_FILE_PATH
+from . import OUTPUT_DIR, LIFE_EXPECTANCY_FILE_PATH
 
 
 def test_clean_data(pt_life_expectancy_expected):

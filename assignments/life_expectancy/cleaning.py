@@ -46,7 +46,7 @@ def filter_region(df,country):
     return df
 
 def save_data(df):
-    df.to_csv(SAVE_FILE_PATH+r'\pt_life_expectancy.csv',index=False)
+    df.to_csv(pathlib.Path(__file__).parent/"data"/ "pt_life_expectancy.csv",index=False)
 
 
 if __name__ == "__main__":  # pragma: no cover
@@ -55,7 +55,6 @@ if __name__ == "__main__":  # pragma: no cover
     args = parser.parse_args()
 
     read_file_name = "eu_life_expectancy_raw.tsv"
-    print (pathlib.Path(__file__))
     file_path = pathlib.Path(__file__).parent/"data"/ read_file_name
 
     clean_data(file_path,args.country)

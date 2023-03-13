@@ -1,11 +1,13 @@
 import argparse
+import pathlib
 import pandas as pd
 
-LIFE_EXPECTANCY_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data\eu_life_expectancy_raw.tsv"
+#LIFE_EXPECTANCY_FILE_PATH=Path('eu_life_expectancy_raw.tsv')
+#r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data\eu_life_expectancy_raw.tsv"
 SAVE_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data"
 
-def clean_data (file_name, country):
-    save_data(filter_region(date_format(unpivot(load_file(file_name))), country))
+def clean_data (path:pathlib.Path, country):
+    save_data(filter_region(date_format(unpivot(load_file(path))), country))
 
 
 def load_file(file_name):
@@ -44,11 +46,15 @@ def filter_region(df,country):
     return df
 
 def save_data(df):
-    df.to_csv(SAVE_FILE_PATH+r'\pt_life_expectancy.csv',index=False)
+    df.to_csv(pathlib.Path(__file__).parent/"data"/ "pt_life_expectancy.csv",index=False)
 
 
 if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument("country")
     args = parser.parse_args()
-    clean_data(LIFE_EXPECTANCY_FILE_PATH,args.country)
+
+    read_file_name = "eu_life_expectancy_raw.tsv"
+    file_path = pathlib.Path(__file__).parent/"data"/ read_file_name
+
+    clean_data(file_path,args.country)

@@ -32,3 +32,6 @@ Now you're ready to go!
 Open the `README.md` file inside each assignment and follow the instructions.
 
 > **Note**: Remember that all commands inside the Readme files assume you are in the root of the project.
+
+[![Pylint](https://github.com/carolinafm216/FAAST/actions/workflows/pylint.yml/badge.svg?branch=ci)](https://github.com/carolinafm216/FAAST/actions/workflows/pylint.yml)
+

@@ -1,6 +1,6 @@
 import argparse
-import pandas as pd
 from pathlib import Path
+import pandas as pd
 
 LIFE_EXPECTANCY_FILE_PATH=Path('eu_life_expectancy_raw.tsv')
 #r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data\eu_life_expectancy_raw.tsv"

@@ -1,4 +1,3 @@
-import argparse
 import pathlib
 import pandas as pd
 
@@ -6,14 +5,7 @@ read_file_name = "eu_life_expectancy_raw.tsv"
 file_path = pathlib.Path(__file__).parent / "data" / read_file_name
 
 
-def load_data(path: pathlib.Path) -> pd.DataFrame:
-    # with open(path, encoding="utf8") as file:
-    read_file = pd.read_csv(path, sep="\t")
-    df = pd.DataFrame(read_file)
-    return df
-
-
-def _unpivot(df: pd.DataFrame) -> pd.DataFrame:
+def unpivot(df: pd.DataFrame) -> pd.DataFrame:
     # keep unit, sex, age and geo time as columns and unpivot years
     value_vars = list(df.columns)[1:]
     df = df.melt(
@@ -31,7 +23,7 @@ def _unpivot(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def _convert_date_format(df: pd.DataFrame) -> pd.DataFrame:
+def convert_date_format(df: pd.DataFrame) -> pd.DataFrame:
     df = df.astype({"year": "int"})
     # remove all values that are equal to ":"
     df = df[df.value != ": "]
@@ -44,25 +36,11 @@ def _convert_date_format(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def _filter_region(df: pd.DataFrame, country: str) -> pd.DataFrame:
+def filter_region(df: pd.DataFrame, country: str) -> pd.DataFrame:
     df = df[df.region == country]
     return df
 
 
-def save_data(df: pd.DataFrame):
-    df.to_csv(
-        pathlib.Path(__file__).parent / "data" / "pt_life_expectancy.csv", index=False
-    )
-
-
 def clean_data(df: pd.DataFrame, country: str) -> pd.DataFrame:
     # return filter_region(date_format(unpivot(df)), country)
-    return df.pipe(_unpivot).pipe(_convert_date_format).pipe(_filter_region, country)
-
-
-if __name__ == "__main__":  # pragma: no cover
-    parser = argparse.ArgumentParser()
-    parser.add_argument("country")
-    args = parser.parse_args()
-
-    save_data(clean_data(load_data(file_path), args.country))
+    return df.pipe(unpivot).pipe(convert_date_format).pipe(filter_region, country)

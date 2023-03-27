@@ -21,3 +21,18 @@ def run_before_and_after_tests() -> None:
 def pt_life_expectancy_expected() -> pd.DataFrame:
     """Fixture to load the expected output of the cleaning script"""
     return pd.read_csv(FIXTURES_DIR / "pt_life_expectancy_expected.csv")
+
+
+@pytest.fixture(scope="session")
+def life_expectancy_unpivot() -> pd.DataFrame:
+    return pd.read_json(FIXTURES_DIR / "life_expectancy_unpivot.json")
+
+
+@pytest.fixture(scope="session")
+def life_expectancy_convert_date_format() -> pd.DataFrame:
+    return pd.read_json(FIXTURES_DIR / "life_expectancy_convert_date_format.json")
+
+
+@pytest.fixture(scope="session")
+def life_expectancy_filter_region() -> pd.DataFrame:
+    return pd.read_json(FIXTURES_DIR / "life_expectancy_filter_region.json")

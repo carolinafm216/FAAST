@@ -1,5 +1,5 @@
 from pathlib import Path
-from life_expectancy.cleaning import clean_data, file_path
+from life_expectancy.data_cleaning import clean_data, file_path
 
 LIFE_EXPECTANCY_FILE_PATH = Path("eu_life_expectancy_raw.tsv")
 

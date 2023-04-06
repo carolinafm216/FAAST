@@ -36,3 +36,13 @@ def life_expectancy_convert_date_format() -> pd.DataFrame:
 @pytest.fixture(scope="session")
 def life_expectancy_filter_region() -> pd.DataFrame:
     return pd.read_json(FIXTURES_DIR / "life_expectancy_filter_region.json")
+
+
+@pytest.fixture(scope="session")
+def life_expectancy_original() -> pd.DataFrame:
+    return pd.read_json(FIXTURES_DIR / "life_expectancy_original.json")
+
+
+@pytest.fixture(scope="session")
+def life_expectancy_mock() -> pd.DataFrame:
+    return pd.read_csv(FIXTURES_DIR / "mock_file_path.csv")

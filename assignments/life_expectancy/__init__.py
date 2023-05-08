@@ -1,10 +1,9 @@
-import pathlib
-from life_expectancy.data_cleaning import clean_data, file_path
-from life_expectancy.loading_saving_data import load_data, save_data
+from pathlib import Path
+from life_expectancy.cleaning import clean_data
 
-LIFE_EXPECTANCY_FILE_PATH = (
-    pathlib.Path(__file__).parent / "data" / "eu_life_expectancy_raw.tsv"
-)
+LIFE_EXPECTANCY_FILE_PATH=Path('eu_life_expectancy_raw.tsv')
+#LIFE_EXPECTANCY_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data\eu_life_expectancy_raw.tsv"
+SAVE_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data"
 
 if __name__ == "__main__":  # pragma: no cover
-    save_data(clean_data(load_data(LIFE_EXPECTANCY_FILE_PATH), "PT"))
+    clean_data(LIFE_EXPECTANCY_FILE_PATH,'PT')

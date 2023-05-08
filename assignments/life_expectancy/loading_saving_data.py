@@ -6,7 +6,6 @@ file_path = pathlib.Path(__file__).parent / "data" / read_file_name
 
 
 def load_data(path: pathlib.Path) -> pd.DataFrame:
-    # with open(path, encoding="utf8") as file:
     read_file = pd.read_csv(path, sep="\t")
     df = pd.DataFrame(read_file)
     return df

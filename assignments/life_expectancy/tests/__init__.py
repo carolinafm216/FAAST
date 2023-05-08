@@ -1,10 +1,14 @@
 """Test suite for the 1st assignment"""
 from pathlib import Path
-
-LIFE_EXPECTANCY_FILE_PATH=Path('eu_life_expectancy_raw.tsv')
-#LIFE_EXPECTANCY_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data\eu_life_expectancy_raw.tsv"
-SAVE_FILE_PATH=r"C:\Users\cfmarreiros\Documents\GitHub\FAAST\assignments\life_expectancy\data"
-
+import pathlib
+import pandas as pd
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 OUTPUT_DIR = Path(__file__).parent.parent / "data"
+
+df_original = pd.read_json(
+    pathlib.Path(__file__).parent / "fixtures" / "life_expectancy_original.json"
+)
+df_expected_unpivot = pd.read_json(
+    pathlib.Path(__file__).parent / "fixtures" / "life_expectancy_unpivot.json"
+)

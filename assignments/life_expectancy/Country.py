@@ -11,7 +11,6 @@ class Country(Enum):
 
     @classmethod
     def list_all_countries(self, df: pd.DataFrame) -> pd.DataFrame:
-        # refazer sem usar df
         listCountries = df["region"].str[:2]
         listCountries = list(dict.fromkeys(listCountries.to_list()))
         return listCountries

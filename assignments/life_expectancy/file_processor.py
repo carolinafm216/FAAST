@@ -1,5 +1,5 @@
-import pandas as pd
 from abc import ABC, abstractmethod
+import pandas as pd
 
 
 # FileProcessor
@@ -9,7 +9,6 @@ class file_processor:
         self._strategy = strategy
 
     def load_data(self):
-        # read_file = pd.read_csv(path, sep="\t")
         data = self._strategy.read_file(self._file_path)
         df = pd.DataFrame(data)
         return df

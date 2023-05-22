@@ -1,7 +1,8 @@
 import pathlib
 from unittest.mock import patch
 import pandas as pd
-from life_expectancy.loading_saving_data import load_data
+from life_expectancy import file_processor
+from life_expectancy.loading_saving_data import *
 
 
 read_file_name = "mock_file_path.tsv"
@@ -13,7 +14,8 @@ def test_load_data(life_expectancy_filter_region):
     with patch("life_expectancy.loading_saving_data.pd.read_csv") as mock_read_csv:
         mock_read_csv.return_value = life_expectancy_filter_region  # imput fixture
 
-        raw_actual = load_data(file_path)
+        File_processor = file_processor(file_path, file_processor.CSVReadingStrategy())
+        raw_actual = File_processor.load_data()
 
         pd.testing.assert_frame_equal(raw_actual, life_expectancy_filter_region)
         mock_read_csv.assert_called_once_with(file_path, sep="\t")

@@ -1,7 +1,8 @@
 """Tests for the cleaning module"""
 from unittest.mock import patch
 import pandas as pd
-from life_expectancy.loading_saving_data import save_data, load_data, file_path
+from life_expectancy.file_processor import load_data
+from life_expectancy.loading_saving_data import save_data, file_path
 from life_expectancy.data_cleaning import clean_data
 from . import OUTPUT_DIR
 

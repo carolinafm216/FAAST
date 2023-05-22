@@ -46,3 +46,8 @@ def life_expectancy_original() -> pd.DataFrame:
 @pytest.fixture(scope="session")
 def life_expectancy_mock() -> pd.DataFrame:
     return pd.read_csv(FIXTURES_DIR / "mock_file_path.csv")
+
+
+@pytest.fixture(scope="session")
+def coutry_list_expected() -> list:
+    return ["AL", "PT", "CH"]

@@ -21,7 +21,6 @@ def test_load_data(life_expectancy_filter_region):
 
 def test_save_data(capfd):
     msg = "I was saved"
-    # print (life_expectancy_mock)
 
     with patch("life_expectancy.loading_saving_data.save_data") as mock_save:
         mock_save.side_effect = print(msg, end="")

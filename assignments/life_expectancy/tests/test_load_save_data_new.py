@@ -5,20 +5,19 @@ from life_expectancy import file_processor
 from life_expectancy.loading_saving_data import *
 
 
-read_file_name = "mock_file_path.tsv"
-file_path = pathlib.Path(__file__).parent / "data" / read_file_name
+File_Path = pathlib.Path(__file__).parent / "data" / read_file_name
 
 
-def test_load_data(life_expectancy_filter_region):
+def test_load_data(Life_Expectancy_Filter_Region):
     # test if load data function is calling the right arguments
     with patch("life_expectancy.loading_saving_data.pd.read_csv") as mock_read_csv:
-        mock_read_csv.return_value = life_expectancy_filter_region  # imput fixture
+        mock_read_csv.return_value = Life_Expectancy_Filter_Region  # imput fixture
 
-        File_Processor = file_processor(file_path, file_processor.CSVReadingStrategy())
-        Raw_Actual = File_Processor.load_data()
+        strategy = file_processor.CSVReadingStrategy()
+        Raw_Actual = strategy.read_file(File_Path)
 
-        pd.testing.assert_frame_equal(Raw_Actual, life_expectancy_filter_region)
-        mock_read_csv.assert_called_once_with(file_path, sep="\t")
+        pd.testing.assert_frame_equal(Raw_Actual, Life_Expectancy_Filter_Region)
+        mock_read_csv.assert_called_once_with(File_Path, sep="\t")
 
 
 

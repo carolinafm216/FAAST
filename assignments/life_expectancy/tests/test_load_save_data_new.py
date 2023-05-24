@@ -14,11 +14,12 @@ def test_load_data(life_expectancy_filter_region):
     with patch("life_expectancy.loading_saving_data.pd.read_csv") as mock_read_csv:
         mock_read_csv.return_value = life_expectancy_filter_region  # imput fixture
 
-        File_processor = file_processor(file_path, file_processor.CSVReadingStrategy())
-        raw_actual = File_processor.load_data()
+        File_Processor = file_processor(file_path, file_processor.CSVReadingStrategy())
+        Raw_Actual = File_Processor.load_data()
 
-        pd.testing.assert_frame_equal(raw_actual, life_expectancy_filter_region)
+        pd.testing.assert_frame_equal(Raw_Actual, life_expectancy_filter_region)
         mock_read_csv.assert_called_once_with(file_path, sep="\t")
+
 
 
 def test_save_data(capfd):

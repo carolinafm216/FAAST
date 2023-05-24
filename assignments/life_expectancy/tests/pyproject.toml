@@ -30,5 +30,4 @@ disable = [
    "missing-function-docstring",
    "line-too-long",
    "invalid-name",
-   "bad-classmethod-argument",
 ]

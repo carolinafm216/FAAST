@@ -1,5 +1,6 @@
 import pathlib
 import pandas as pd
+from life_expectancy import Country
 
 read_file_name = "eu_life_expectancy_raw.tsv"
 file_path = pathlib.Path(__file__).parent / "data" / read_file_name
@@ -36,11 +37,11 @@ def convert_date_format(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def filter_region(df: pd.DataFrame, country: str) -> pd.DataFrame:
+def filter_region(df: pd.DataFrame, country: Country) -> pd.DataFrame:
     df = df[df.region == country]
     return df
 
 
-def clean_data(df: pd.DataFrame, country: str) -> pd.DataFrame:
+def clean_data(df: pd.DataFrame, country: Country) -> pd.DataFrame:
     # return filter_region(date_format(unpivot(df)), country)
     return df.pipe(unpivot).pipe(convert_date_format).pipe(filter_region, country)

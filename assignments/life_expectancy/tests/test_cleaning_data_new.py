@@ -1,6 +1,7 @@
 import pandas as pd
 from life_expectancy.data_cleaning import unpivot, convert_date_format, filter_region
 
+
 def test_unipivot(life_expectancy_unpivot, life_expectancy_original):
     response_df = unpivot(life_expectancy_original)
     # in order to force json file columns to be str
